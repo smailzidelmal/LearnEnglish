@@ -13,6 +13,8 @@ public class GameGenerator : MonoBehaviour
     public Vector3 posplayer = new Vector3(0f,-1f, -5.98f);
     public GameObject enemy;
     public Vector3 posenemy = new Vector3(0f, -1f,-1f);
+    public GameObject bg;
+    
     
     // Start is called before the first frame update
     
