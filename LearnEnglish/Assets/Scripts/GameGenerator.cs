@@ -14,6 +14,8 @@ public class GameGenerator : MonoBehaviour
     public GameObject enemy;
     public Vector3 posenemy = new Vector3(0f, -1f,-1f);
     public GameObject bg;
+
+    public Vector3 posbg = new Vector3(0f, 0f,60f);
     
     
     // Start is called before the first frame update
@@ -49,6 +51,10 @@ public class GameGenerator : MonoBehaviour
    		foreach(GameObject obj in objects){
 			GameObject.Destroy(obj);
 		}
+        objects = GameObject.FindGameObjectsWithTag("BackGround");
+   		foreach(GameObject obj in objects){
+			GameObject.Destroy(obj);
+		}
     }
 
     public void initGame(){
@@ -61,6 +67,7 @@ public class GameGenerator : MonoBehaviour
         Vector3 posenemy3 = posenemy;
         posenemy3.x -= 2f;
         Instantiate(player,posplayer,Quaternion.identity);
+        Instantiate(bg,posbg,Quaternion.identity);
         GameObject enemytmp;
         enemytmp = Instantiate(enemy,posenemy,Quaternion.identity);
         enemytmp.transform.Rotate (new Vector3 (0f, 180f, 0f));
