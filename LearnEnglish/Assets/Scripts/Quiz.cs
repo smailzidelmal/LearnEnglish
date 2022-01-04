@@ -18,12 +18,16 @@ public class Quiz: MonoBehaviour
     
     void Start()
     {
-        Debug.Log("ca marche");
-        Quizz[0]="le Nom de Axel ?,Macron,Francois,Gerard,Foltyn,Foltyn";
-        Quizz[1]="le Nom de Smail ?,Zidelmal,kahil,Amara,Matoub,Zidelmal";
+
+        Quizz[0]="How old are you? I ________ ,have 30,have 30 years,am 30 years,am 30 years old,Foltyn";
+        Quizz[1]="Please _________ you speak slower?,could,will,do,are,do";
+        Quizz[2]="London is the capital of the United ________ .,country,land,headquarters,Kingdom,Kingdom";
+        Quizz[3]="I’ll wait for you _________.,house,at home,home,to home,at home";
+        Quizz[4]="I love _________ abroad. ,to travelling,travel,to travel,is travelling,travel";
         
-        nbQst= 2;
-        Quizz[2]="le Jeu est fini !!,Merci,Score,Niveau,AuRevoir,Merci";
+        nbQst= 5;
+        Quizz[5]="le Jeu est fini !!,Merci,Score,Niveau,AuRevoir,Merci";
+        
         TxtQuestion = GameObject.Find("TextQuestion").GetComponent <Text>();
         TxtHG = GameObject.Find("textHG").GetComponent <TextMesh>();
         TxtHD = GameObject.Find("textHD").GetComponent <TextMesh>();

@@ -8,6 +8,9 @@ public class Click : MonoBehaviour
     void OnMouseDown(){
     	int numQst =GameObject.Find("Canvas").GetComponent<Quiz>().numQst ;
         int nbQst =GameObject.Find("Canvas").GetComponent<Quiz>().nbQst;
+        
+        //todo calcule du score 
+        
     	if(GameObject.Find("Canvas").GetComponent<Quiz>().reponse == transform.GetChild(0).GetComponent<TextMesh>().text)
     	{
     		Debug.Log(" bonne réponse !! ....confirmez votre performance avec cette nouvelle question  ");
