@@ -14,6 +14,7 @@ public class Click : MonoBehaviour
     	if(GameObject.Find("Canvas").GetComponent<Quiz>().reponse == transform.GetChild(0).GetComponent<TextMesh>().text)
     	{
     		Debug.Log(" bonne réponse !! ....confirmez votre performance avec cette nouvelle question  ");
+    		GameObject.Find("Canvas").GetComponent<Quiz>().score +=1;
     		if(numQst+1 < nbQst){
     			GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
     		}

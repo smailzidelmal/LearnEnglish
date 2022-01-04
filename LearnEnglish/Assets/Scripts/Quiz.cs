@@ -15,6 +15,8 @@ public class Quiz: MonoBehaviour
     public int numQst =0;
     public int nbQst= 0;
     public string reponse;
+    public int score = 0 ;
+    private string niveau;
     
     void Start()
     {
@@ -40,7 +42,7 @@ public class Quiz: MonoBehaviour
 	Quizz[18]="This lesson is too ________. Could you help me? ,easy,tiring,hard,boring,hard";
 	Quizz[19]="Yesterday I _______ to the restaurant with my boyfriend.,go,to go,went,have gone,went";
         nbQst= 20;
-        Quizz[20]="le Jeu est fini !!,Merci,Score,Niveau,AuRevoir,Merci";
+        Quizz[20]="le Jeu est fini !!,Merci,Score : ,Niveau :,AuRevoir,Merci";
         
         TxtQuestion = GameObject.Find("TextQuestion").GetComponent <Text>();
         TxtHG = GameObject.Find("textHG").GetComponent <TextMesh>();
@@ -58,12 +60,17 @@ public class Quiz: MonoBehaviour
     }
     void PoseUneQuestion(int numQst)
     {
+    	if (score <= 20){niveau="A1- Débutant";}
+    	else if (score <= 35){niveau="A2- Moyen";}
+    	else if (score <= 60){niveau="B1- intermédiaire ";}
+    	else if (score <= 80){niveau="B2-Avancé ";}
+    	else if(score <= 90){niveau="C1- Courant";}
     	
     	string[] Col=Quizz[numQst].Split(',');
     	TxtQuestion.text=Col[0];
     	TxtHG.text=Col[1];
-    	TxtHD.text=Col[2];
-    	TxtBG.text=Col[3];
+    	TxtHD.text=Col[2]+score;
+    	TxtBG.text=Col[3]+niveau;
     	TxtBD.text=Col[4];
     	reponse=Col[5];
     }
