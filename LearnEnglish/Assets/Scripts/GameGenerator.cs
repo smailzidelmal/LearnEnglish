@@ -17,15 +17,19 @@ public class GameGenerator : MonoBehaviour
 
     public Vector3 posbg = new Vector3(0f, 0f,60f);
     
-    
+    private bool isStarted = false;
     // Start is called before the first frame update
     
     void Start()
     {
+        isStarted = false;
         InvokeRepeating("spawnRoad", startDelay, repeatrate);
     }
 
     public void spawnRoad(){
+        if (!isStarted){
+            return;
+        }
         Vector3 pos;
         if (lastroad != null){
             pos = lastroad.transform.position;
@@ -55,10 +59,12 @@ public class GameGenerator : MonoBehaviour
    		foreach(GameObject obj in objects){
 			GameObject.Destroy(obj);
 		}
+        isStarted = false;
     }
 
     public void initGame(){
         destroyAll();
+        isStarted = true;
         for (int i = 0; i <= 8; i++){
             spawnRoad();
         }
