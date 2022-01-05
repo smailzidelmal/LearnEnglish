@@ -3408,6 +3408,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8591518277243012410}
   - component: {fileID: 8591518277250738878}
+  - component: {fileID: 2097901597019355112}
+  - component: {fileID: 5841821722549086405}
   m_Layer: 0
   m_Name: enemi
   m_TagString: Enemy
@@ -3451,6 +3453,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2097901597019355112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8591518277243443418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204cdc9159ec3a3038b3aaee55bed1a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 7947150345867701162, guid: 490c0c15ac18c4039a73403df7536ca8, type: 3}
+--- !u!65 &5841821722549086405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8591518277243443418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0738273, z: 0.40395713}
+  m_Center: {x: -0, y: 0.53312516, z: -0.050440907}
 --- !u!1 &8591518277243443568
 GameObject:
   m_ObjectHideFlags: 0

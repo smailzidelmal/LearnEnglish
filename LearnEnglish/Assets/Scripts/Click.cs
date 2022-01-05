@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Click : MonoBehaviour
 {
-   
+   	public GameObject canvas;
     void OnMouseDown(){
+		
     	int numQst =GameObject.Find("Canvas").GetComponent<Quiz>().numQst ;
         int nbQst =GameObject.Find("Canvas").GetComponent<Quiz>().nbQst;
-        
+		//bool isClick = GameObject.Find("enemy(clone)").GetComponent<EnemyManager>().isClicked;
+        //Debug.Log("bool =>"+isClick);
         //todo calcule du score 
         
     	if(GameObject.Find("Canvas").GetComponent<Quiz>().reponse == transform.GetChild(0).GetComponent<TextMesh>().text)
@@ -16,7 +18,7 @@ public class Click : MonoBehaviour
     		Debug.Log(" bonne réponse !! ....confirmez votre performance avec cette nouvelle question  ");
     		GameObject.Find("Canvas").GetComponent<Quiz>().score +=1;
     		if(numQst+1 < nbQst){
-    			GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
+    			//GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
     		}
     		else{
     			Debug.Log(" Le Jeu est Fini ");
@@ -27,12 +29,17 @@ public class Click : MonoBehaviour
     	{
     		Debug.Log(" Mauvaise réponse ....essayer de vous rattraper avec cette nouvelle question  ");
   		if(numQst+1 < nbQst){
-    			GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
+    			//GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
     		}
     		else{
     			Debug.Log(" Le Jeu est Fini ");
     			GameObject.Find("Canvas").GetComponent<Quiz>().numQst=nbQst;
     		}
     	}
+		Debug.Log("Desactivate");
+		//canvas = GameObject.Find("Canvas");
+		//GameObject.Find("Canvas").SetActive(false);
+		//GameObject.Find("Canvas").GetComponent<Canvas>().enabled = false;
+		//GetComponent<CanvasElementVisibility>().Visible  = false;
     }
 }
