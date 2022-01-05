@@ -9,7 +9,6 @@ public class EnemyManager : MonoBehaviour
     void OnMouseDown(){
         Canvas[] onlyInactive = GameObject.FindObjectsOfType<Canvas>(true).Where(sr => !sr.gameObject.activeInHierarchy).ToArray();
         if (onlyInactive.Length == 1) {
-            Debug.Log("FIND YOU !!!");
             onlyInactive[0].gameObject.SetActive(true);
             int numQst = GameObject.Find("Canvas").GetComponent<Quiz>().numQst ;
             int nbQst = GameObject.Find("Canvas").GetComponent<Quiz>().nbQst;

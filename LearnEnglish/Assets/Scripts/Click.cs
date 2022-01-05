@@ -9,8 +9,6 @@ public class Click : MonoBehaviour
 		
     	int numQst =GameObject.Find("Canvas").GetComponent<Quiz>().numQst ;
         int nbQst =GameObject.Find("Canvas").GetComponent<Quiz>().nbQst;
-		//bool isClick = GameObject.Find("enemy(clone)").GetComponent<EnemyManager>().isClicked;
-        //Debug.Log("bool =>"+isClick);
         //todo calcule du score 
         
     	if(GameObject.Find("Canvas").GetComponent<Quiz>().reponse == transform.GetChild(0).GetComponent<TextMesh>().text)
