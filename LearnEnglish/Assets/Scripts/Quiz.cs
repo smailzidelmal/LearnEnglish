@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using System.Linq;
 
 public class Quiz: MonoBehaviour
 {
     // Start is called before the first frame update
+    public bool new_questions = true;
+
     private Text TxtQuestion;
     private TextMesh TxtHG;
     private TextMesh TxtHD;
@@ -19,6 +22,8 @@ public class Quiz: MonoBehaviour
     public string reponse;
     public int score = 0 ;
     private string niveau;
+
+
     
     void Start()
     {
@@ -71,11 +76,27 @@ public class Quiz: MonoBehaviour
         PoseUneQuestion(numQst);
     }
 
+
+
+
     // Update is called once per frame
     void Update()
     {
-        PoseUneQuestion(numQst);
+        if (new_questions){
+            PoseUneQuestion(numQst);
+        }
+        
     }
+
+    private void random_val<T>(T[] alpha){
+        for (int i = 0; i < alpha.Length; i++) {
+            T temp = alpha[i];
+            int randomIndex = Random.Range(i, alpha.Length);
+            alpha[i] = alpha[randomIndex];
+            alpha[randomIndex] = temp;
+        }
+    }
+    
     void PoseUneQuestion(int numQst)
     {
     	if (score <= 20){niveau="A1- Débutant";}
@@ -86,11 +107,21 @@ public class Quiz: MonoBehaviour
     	
     	//string[] Col=Quizz[numQst].Split(',');
     	string[] Col=Quizz2[numQst];
+        
+        //TODO: mettre le random des questions de maniere plus propre.
+        int[] alpha = {1, 2, 3, 4};
+        if (nbQst != numQst){
+            random_val<int>(alpha);
+            Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
+        }
+
+
         TxtQuestion.text=Col[0];
-    	TxtHG.text=Col[1];
-    	TxtHD.text=Col[2]+score;
-    	TxtBG.text=Col[3]+niveau;
-    	TxtBD.text=Col[4];
+    	TxtHG.text=Col[alpha[0]];
+    	TxtHD.text=Col[alpha[1]]+score;
+    	TxtBG.text=Col[alpha[2]]+niveau;
+    	TxtBD.text=Col[alpha[3]];
     	reponse=Col[5];
+        new_questions = false;
     }
 }

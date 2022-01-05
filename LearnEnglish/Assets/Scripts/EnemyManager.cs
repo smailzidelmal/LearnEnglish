@@ -16,5 +16,6 @@ public class EnemyManager : MonoBehaviour
             Debug.Log(" Le Jeu est Fini ");
             GameObject.Find("Canvas").GetComponent<Quiz>().numQst=nbQst;
         }
+        GameObject.Find("Canvas").GetComponent<Quiz>().new_questions = true;
     }
 }
