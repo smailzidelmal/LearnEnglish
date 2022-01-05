@@ -37,9 +37,6 @@ public class Click : MonoBehaviour
     		}
     	}
 		Debug.Log("Desactivate");
-		//canvas = GameObject.Find("Canvas");
-		//GameObject.Find("Canvas").SetActive(false);
-		//GameObject.Find("Canvas").GetComponent<Canvas>().enabled = false;
-		//GetComponent<CanvasElementVisibility>().Visible  = false;
+		GameObject.Find("Canvas").SetActive(false);
     }
 }
