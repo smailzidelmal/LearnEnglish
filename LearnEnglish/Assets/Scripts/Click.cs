@@ -15,6 +15,7 @@ public class Click : MonoBehaviour
     	{
     		Debug.Log(" bonne réponse !! ....confirmez votre performance avec cette nouvelle question  ");
     		GameObject.Find("Canvas").GetComponent<Quiz>().score +=1;
+    		GeneralInfo.answer(true);
     		if(numQst+1 < nbQst){
     			//GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
     		}
@@ -26,6 +27,7 @@ public class Click : MonoBehaviour
     	else
     	{
     		Debug.Log(" Mauvaise réponse ....essayer de vous rattraper avec cette nouvelle question  ");
+    		GeneralInfo.answer(false);
   		if(numQst+1 < nbQst){
     			//GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
     		}
