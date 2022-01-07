@@ -13,6 +13,7 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GeneralInfo.playerHasAnswer()){}
         player.SetBool("walk", GeneralInfo.isWalk());
     }
 }

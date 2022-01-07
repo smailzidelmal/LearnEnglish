@@ -17,4 +17,8 @@ public static class GeneralInfo
         isanswer =  true;
         correct = answer;
     }
+
+    public static bool playerHasAnswer(){
+        return isanswer;
+    }
 }
