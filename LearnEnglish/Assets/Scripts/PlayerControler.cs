@@ -13,7 +13,16 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GeneralInfo.playerHasAnswer()){}
+        if (GeneralInfo.playerHasAnswer()){
+            if (GeneralInfo.AnswerCorrect()){
+                Debug.Log("frappe");
+                player.SetTrigger("hit");
+            }
+            else{
+                Debug.Log("aie");
+                player.SetTrigger("dammage");
+            }
+        }
         player.SetBool("walk", GeneralInfo.isWalk());
     }
 }
