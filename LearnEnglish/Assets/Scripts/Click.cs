@@ -16,6 +16,8 @@ public class Click : MonoBehaviour
     		Debug.Log(" bonne réponse !! ....confirmez votre performance avec cette nouvelle question  ");
     		GameObject.Find("Canvas").GetComponent<Quiz>().score +=1;
     		GeneralInfo.answer(true);
+    		GameObject.Find("EnnemyHealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.05f;
+    		GameObject.Find("EnnemyTimeBarImage").GetComponent<Timer>().TimerBar.fillAmount = 1f;
     		if(numQst+1 < nbQst){
     			//GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
     		}
@@ -28,7 +30,8 @@ public class Click : MonoBehaviour
     	{
     		Debug.Log(" Mauvaise réponse ....essayer de vous rattraper avec cette nouvelle question  ");
     		GeneralInfo.answer(false);
-    		GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.1f;
+    		GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.05f;
+    		GameObject.Find("EnnemyTimeBarImage").GetComponent<Timer>().TimerBar.fillAmount = 1f;
   		if(numQst+1 < nbQst){
     			//GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
     		}
