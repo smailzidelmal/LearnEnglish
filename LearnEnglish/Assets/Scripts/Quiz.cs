@@ -51,7 +51,7 @@ public class Quiz: MonoBehaviour
             }
         }
         
-        Debug.Log("nbstart = " + numQst);
+      //  Debug.Log("nbstart = " + numQst);
         //PoseUneQuestion(numQst);
     }
 
@@ -78,7 +78,7 @@ public class Quiz: MonoBehaviour
     
     void PoseUneQuestion(int numQst)
     {
-        Debug.Log("nb = " + numQst);
+        //Debug.Log("nb = " + numQst);
     	if (score <= 20){niveau="A1- Débutant";}
     	else if (score <= 35){niveau="A2- Moyen";}
     	else if (score <= 60){niveau="B1- intermédiaire ";}
@@ -92,7 +92,7 @@ public class Quiz: MonoBehaviour
         int[] alpha = {1, 2, 3, 4};
         if (nbQst != numQst){
             random_val<int>(alpha);
-            Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
+           // Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
         }
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Click : MonoBehaviour
 {
-   	public GameObject canvas;
+    public GameObject canvas;
     void OnMouseDown(){
 		
     	int numQst =GameObject.Find("Canvas").GetComponent<Quiz>().numQst ;
@@ -28,6 +28,7 @@ public class Click : MonoBehaviour
     	{
     		Debug.Log(" Mauvaise réponse ....essayer de vous rattraper avec cette nouvelle question  ");
     		GeneralInfo.answer(false);
+    		GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.1f;
   		if(numQst+1 < nbQst){
     			//GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
     		}
