@@ -45,38 +45,39 @@ print(device.version())
 device.start(samplingRate, acqChannels)
 s = 500
 data = []
-start = time.time()
-end = time.time()
-count = 0
-isbip = False
-
-file = "cardio.txt"
-
-while True: #(end - start) < running_time:
-    # Read samples
-    
-    dataRead = device.read(1)
-    #print(dataRead)
-    if dataRead[0][dictChannels['A1']] > s:
-        if not isbip:
-            isbip = True
-            count +=1
-    else:
-        isbip = False
-    if (end - start) > 10:
-        with open(os.path.dirname(__file__) + "/" + file, 'w') as f:
-            print("cardio =", count * 6)
-            f.write(str(count * 6))
-        count = 0
-        start = time.time()
-    data.append(dataRead)
+def run_cardio():
+    start = time.time()
     end = time.time()
+    count = 0
+    isbip = False
 
-# Turn BITalino led on
-device.trigger(digitalOutput)
-    
-# Stop acquisition
-device.stop()
-    
-# Close connection
-device.close()
+    file = "cardio.txt"
+
+    while True: #(end - start) < running_time:
+        # Read samples
+        
+        dataRead = device.read(1)
+        #print(dataRead)
+        if dataRead[0][dictChannels['A1']] > s:
+            if not isbip:
+                isbip = True
+                count +=1
+        else:
+            isbip = False
+        if (end - start) > 10:
+            with open(os.path.dirname(__file__) + "/" + file, 'w') as f:
+                print("cardio =", count * 6)
+                f.write(str(count * 6))
+            count = 0
+            start = time.time()
+        data.append(dataRead)
+        end = time.time()
+
+    # Turn BITalino led on
+    device.trigger(digitalOutput)
+        
+    # Stop acquisition
+    device.stop()
+        
+    # Close connection
+    device.close()
