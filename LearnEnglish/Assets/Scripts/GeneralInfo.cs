@@ -21,4 +21,7 @@ public static class GeneralInfo
     public static bool playerHasAnswer(){
         return isanswer;
     }
+    public static bool AnswerCorrect(){
+        return correct;
+    }
 }
