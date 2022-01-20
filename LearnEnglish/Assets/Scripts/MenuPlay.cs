@@ -11,6 +11,7 @@ public class MenuPlay : MonoBehaviour
     void OnMouseDown(){
         gameGen = GameObject.FindGameObjectWithTag("Generator").GetComponent<GameGenerator>(); 
         gameGen.initGame();
-   	    this.Menu.SetActive(false);
+   	this.Menu.SetActive(false);
+   	GameObject.Find("EnnemyTimeBarImage").GetComponent<Timer>().start = true;
    }
 }
