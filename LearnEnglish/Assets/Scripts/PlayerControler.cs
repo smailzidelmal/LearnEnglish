@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -24,5 +25,14 @@ public class PlayerControler : MonoBehaviour
             }
         }
         player.SetBool("walk", GeneralInfo.isWalk());
+    }
+    void getCardio(){
+        string file = "Assets/Scripts/cardio.txt";
+        string path_file = Path.Combine(Application.dataPath ,Path.GetFullPath(file));
+        if (File.Exists(path_file)){
+            string[] lines = System.IO.File.ReadAllLines(file);
+            Debug.Log(lines[0]);
+            //File.Delete(path_file);
+        }
     }
 }
