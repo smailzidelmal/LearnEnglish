@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
 {
     public GameObject canvas;
     void OnMouseDown(){
+        GeneralInfo.startAnswer();
         Canvas[] onlyInactive = GameObject.FindObjectsOfType<Canvas>(true).Where(sr => !sr.gameObject.activeInHierarchy).ToArray();
         if (onlyInactive.Length == 1) {
             onlyInactive[0].gameObject.SetActive(true);

@@ -18,6 +18,10 @@ public static class GeneralInfo
         correct = answer;
     }
 
+    public static void startAnswer(){
+        isanswer =  false;
+    }
+
     public static bool playerHasAnswer(){
         return isanswer;
     }

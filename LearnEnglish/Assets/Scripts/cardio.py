@@ -4,7 +4,7 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 
-from bitalino import BITalino
+#from bitalino import BITalino
 import bitalino as bt
 
 devices = {
@@ -33,7 +33,7 @@ digitalOutput = [1,1]
 # Choose a device
 macAddress = devices["PsychoBIT2"]
 # Connect to BITalino
-device = BITalino(macAddress)
+device = bt.BITalino(macAddress)
 
 # Set battery threshold
 device.battery(batteryThreshold)
