@@ -15,10 +15,14 @@ public class Timer : MonoBehaviour
     	if(start == true ){
 	    	if( TimerBar.fillAmount == 0 )
 	    	{
-	    		 TimerBar.fillAmount = 1 ;
-	    		 TimerBar.color = Color.green;
-	    		 //la il va subir une attaque donc il faut appeler la variable de click pour faire - valeur de degat
-	    		 GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.05f;
+				TimerBar.fillAmount = 1 ;
+				TimerBar.color = Color.green;
+				//la il va subir une attaque donc il faut appeler la variable de click pour faire - valeur de degat
+				GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.05f;
+				GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControler>().takeDamage();
+				foreach (GameObject ennemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+					ennemy.GetComponent<EnemyManager>().hit();
+				}
 	    	}
 	    	else 
 	    	{

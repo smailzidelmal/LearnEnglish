@@ -18,10 +18,10 @@ public class Click : MonoBehaviour
     		GeneralInfo.answer(true);
     		GameObject.Find("EnnemyHealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.05f;
     		GameObject.Find("EnnemyTimeBarImage").GetComponent<Timer>().TimerBar.fillAmount = 1f;
-    		if(numQst+1 < nbQst){
-    			//GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
-    		}
-    		else{
+			foreach (GameObject ennemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+             	ennemy.GetComponent<EnemyManager>().takeDamage();
+         	}
+    		if(numQst+1 >= nbQst){
     			Debug.Log(" Le Jeu est Fini ");
     			GameObject.Find("Canvas").GetComponent<Quiz>().numQst=nbQst;
     		}
@@ -32,10 +32,10 @@ public class Click : MonoBehaviour
     		GeneralInfo.answer(false);
     		GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.05f;
     		GameObject.Find("EnnemyTimeBarImage").GetComponent<Timer>().TimerBar.fillAmount = 1f;
-  		if(numQst+1 < nbQst){
-    			//GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
-    		}
-    		else{
+  			foreach (GameObject ennemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+             	ennemy.GetComponent<EnemyManager>().hit();
+         	}
+			if(numQst+1 >= nbQst){
     			Debug.Log(" Le Jeu est Fini ");
     			GameObject.Find("Canvas").GetComponent<Quiz>().numQst=nbQst;
     		}

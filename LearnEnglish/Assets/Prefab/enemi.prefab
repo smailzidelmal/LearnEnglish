@@ -3465,6 +3465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204cdc9159ec3a3038b3aaee55bed1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 8591518277250738878}
   canvas: {fileID: 7947150345867701162, guid: 490c0c15ac18c4039a73403df7536ca8, type: 3}
 --- !u!65 &5841821722549086405
 BoxCollider:

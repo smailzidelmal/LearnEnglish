@@ -5,7 +5,18 @@ using System.Linq;
 
 public class EnemyManager : MonoBehaviour
 {
+
+    public Animator enemy;
+
     public GameObject canvas;
+    
+    private Vector3 start_position;
+
+    void Start()
+    {
+        start_position = transform.position;
+    }
+
     void OnMouseDown(){
         GeneralInfo.startAnswer();
         Canvas[] onlyInactive = GameObject.FindObjectsOfType<Canvas>(true).Where(sr => !sr.gameObject.activeInHierarchy).ToArray();
@@ -23,4 +34,16 @@ public class EnemyManager : MonoBehaviour
             GameObject.Find("Canvas").GetComponent<Quiz>().new_questions = true;
         }
     }
+
+    public void hit(){
+        transform.position = start_position;
+        Debug.Log("frappe");
+        enemy.SetTrigger("hit");
+    }
+
+    public void takeDamage(){
+        transform.position = start_position;
+        enemy.SetTrigger("dammage");
+    }
+
 }

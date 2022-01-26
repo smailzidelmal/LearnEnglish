@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-using System.Collections;
-using System.Collections.Generic;
-using IronPython.Hosting;
-using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -14,34 +10,23 @@ public class PlayerControler : MonoBehaviour
     // Start is called before the first frame update
 
     private bool new_answer = true;
+    private Vector3 start_position;
 
     void Start()
-    {/*
-        string file = "Assets/Scripts/cardio.py";
-        string path_file = Path.Combine(Application.dataPath ,Path.GetFullPath(file));
-        string path_python = Path.Combine(Application.dataPath ,Path.GetFullPath("Assets/Plugins/Lib/"));
-        var engine = Python.CreateEngine();
-        var searchPaths = engine.GetSearchPaths();
-        searchPaths.Add(path_python);
-        engine.SetSearchPaths(searchPaths);
-        var scope = engine.CreateScope();
-        engine.ExecuteFile(path_file, scope);
-        dynamic run_cardio = scope.GetVariable("run_cardio");
-        run_cardio();
-    */}
+    {
+        start_position = transform.position;
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (GeneralInfo.playerHasAnswer()){
             if (new_answer){
-                transform.position = new Vector3(0f,-1f,-6f);
                 if (GeneralInfo.AnswerCorrect()){
-                    Debug.Log("frappe");
-                    player.SetTrigger("hit");
+                    hit();
                 }
                 else{
-                    player.SetTrigger("dammage");
+                    takeDamage();
                 }
                 new_answer = false;
             }
@@ -51,6 +36,17 @@ public class PlayerControler : MonoBehaviour
         }
         player.SetBool("walk", GeneralInfo.isWalk());
     }
+
+    public void hit(){
+        transform.position = start_position;
+        player.SetTrigger("hit");
+    }
+
+    public void takeDamage(){
+        transform.position = start_position;
+        player.SetTrigger("dammage");
+    }
+
     void getCardio(){
         string file = "Assets/Scripts/cardio.txt";
         string path_file = Path.Combine(Application.dataPath ,Path.GetFullPath(file));
