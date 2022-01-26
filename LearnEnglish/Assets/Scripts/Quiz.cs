@@ -45,6 +45,7 @@ public class Quiz: MonoBehaviour
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
+                Debug.Log(line);
                 Quizz2.Add(line.Split(';'));
                 nbQst++;
 
