@@ -64,7 +64,7 @@ public class Quiz: MonoBehaviour
  
     private float adaptQuiz ; 
     private bool adapt2Answer = false;
-    private bool adapt4Answer = false;
+    //private bool adapt4Answer = false;
     // Update is called once per frame
     void Update()
     {
