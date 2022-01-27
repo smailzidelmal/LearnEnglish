@@ -24,6 +24,9 @@ public class Quiz: MonoBehaviour
     public int score = 0 ;
     private string niveau;
 
+    public GameObject ButtonHD;
+	public GameObject ButtonHG;
+
 
     
     void Start()
@@ -60,7 +63,8 @@ public class Quiz: MonoBehaviour
 
  
     private float adaptQuiz ; 
-    private bool adapt2Answer;
+    private bool adapt2Answer = false;
+    private bool adapt4Answer = false;
     // Update is called once per frame
     void Update()
     {
@@ -109,8 +113,8 @@ public class Quiz: MonoBehaviour
         TxtQuestion.text=Col[0];
         
         adaptQuiz = GameObject.Find("EnnemyTimeBarImage").GetComponent<MyTimer>().maxTime;
-  	GameObject ButtonHD = GameObject.Find("AnswerHD");
-	GameObject ButtonHG = GameObject.Find("AnswerHG");
+        //GameObject ButtonHD = GameObject.Find("AnswerHD");
+        //GameObject ButtonHG = GameObject.Find("AnswerHG");
         
         if ( adaptQuiz == 5 ) {
         	int indexGdAns = Array.IndexOf(Col,Col[5]);
