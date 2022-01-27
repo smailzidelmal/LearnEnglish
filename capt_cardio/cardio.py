@@ -44,7 +44,7 @@ print(device.version())
 # Start Acquisition
 device.start(samplingRate, acqChannels)
 s = 500
-s_diff = 0
+s_diff = 1
 data = []
 
 def run_cardio():
@@ -62,21 +62,23 @@ def run_cardio():
     
 
         # Read sample
-        dataRead = device.read(1)
+        dataRead = device.read(nSamples)
 
-        #print(dataRead[0][dictChannels['A1']])
-        if last_val is not None:
-            diff = dataRead[0][dictChannels['A1']] - last_val
-        if diff < 0 and (last_diff == None or diff * last_diff < -s_diff):
-        #if dataRead[0][dictChannels['A1']] > s:
-            if not isbip:
-                #print("bip")
-                isbip = True
-                count +=1
-        else:
-            isbip = False
-        last_val = dataRead[0][dictChannels['A1']]
-        last_diff = diff
+
+        for data in dataRead:     
+            #print(dataRead[0][dictChannels['A1']])
+            if last_val is not None:
+                diff = data[dictChannels['A1']] - last_val
+            if diff < 0 and (last_diff == None or diff * last_diff < -s_diff):
+            #if data[dictChannels['A1']] > s:
+                if not isbip:
+                    #print("bip")
+                    isbip = True
+                    count +=1
+            else:
+                isbip = False
+            last_val = data[dictChannels['A1']]
+            last_diff = diff
         if (end - start) > 10:
             path = os.path.dirname(os.path.realpath(__file__))
             if os.access(path + "/" + file, os.F_OK | os.W_OK):
@@ -86,7 +88,7 @@ def run_cardio():
                     f.write(str(count * int(60 / (end - start))))
                 count = 0
                 start = time.time()
-        data.append(dataRead)
+        #data.append(dataRead)
         end = time.time()
 
     # Turn BITalino led on
