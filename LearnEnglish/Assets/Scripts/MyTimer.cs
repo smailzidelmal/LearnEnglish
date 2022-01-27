@@ -3,18 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class MyTimer : MonoBehaviour
 {
+   
     public float fraction = 10000f;
     public float maxTime = 10f;
     public Image TimerBar;
     public bool start = false ;
-	public float step = 1f;
-
+    public float step = 1f;
+    
+    private float adaptSpeedTimeDelay = 10.0f;
+    private float nextadaptSpeedTime = 0.0f;
+    
     // Update is called once per frame
     void Update()
     {
     	if(start == true ){
+    		
+    		
+    		if (Time.time > nextadaptSpeedTime)
+       	{
+       		int instantPPM =  GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControler>().getCardio();
+    		        int avragePPM =   GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControler>().avragePPM;
+    		        nextadaptSpeedTime = Time.time + adaptSpeedTimeDelay;
+    		       // Debug.Log(" instantppm"+instantPPM+" les secondes passées"+Time.time +" next "+nextadaptSpeedTime+" adapt time "+adaptSpeedTimeDelay );
+         	 	
+	    		if (instantPPM > avragePPM + 10 ){slow();}
+	    		if (instantPPM < avragePPM - 10 ){accelerate();}
+	    	}
 	    	if( TimerBar.fillAmount <= 0 )
 	    	{
 				TimerBar.fillAmount = 1 ;
@@ -39,6 +56,7 @@ public class MyTimer : MonoBehaviour
 
 	public void slow(){
 		maxTime = Mathf.Max(5f, maxTime - step);
+		Debug.Log("slow"+maxTime);
 	}
 
 	public void accelerate(){

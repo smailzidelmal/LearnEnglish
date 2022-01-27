@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Linq;
+using System;
 
 public class Quiz: MonoBehaviour
 {
@@ -57,13 +58,20 @@ public class Quiz: MonoBehaviour
     }
 
 
-
-
+ 
+    private float adaptQuiz ; 
+    private bool adapt2Answer;
     // Update is called once per frame
     void Update()
     {
+    	adaptQuiz = GameObject.Find("EnnemyTimeBarImage").GetComponent<MyTimer>().maxTime;
         if (new_questions){
             PoseUneQuestion(numQst);
+            adapt2Answer =true ;
+        }
+        else if (adaptQuiz == 5 &  adapt2Answer == true ){
+      		 PoseUneQuestion(numQst);
+        	 adapt2Answer=false; 
         }
         
     }
@@ -71,7 +79,7 @@ public class Quiz: MonoBehaviour
     private void random_val<T>(T[] alpha){
         for (int i = 0; i < alpha.Length; i++) {
             T temp = alpha[i];
-            int randomIndex = Random.Range(i, alpha.Length);
+            int randomIndex = UnityEngine.Random.Range(i, alpha.Length);
             alpha[i] = alpha[randomIndex];
             alpha[randomIndex] = temp;
         }
@@ -91,19 +99,45 @@ public class Quiz: MonoBehaviour
         
         //TODO: mettre le random des questions de maniere plus propre.
         int[] alpha = {1, 2, 3, 4};
-        if (nbQst != numQst){
-            random_val<int>(alpha);
-           // Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
-        }
 
-
+  	
         TxtQuestion.text=Col[0];
-    	TxtHG.text=Col[alpha[0]];
-    	TxtHD.text=Col[alpha[1]];
-    	TxtBG.text=Col[alpha[2]];
-    	//TxtHD.text=Col[alpha[1]]+score;
-    	//TxtBG.text=Col[alpha[2]]+niveau;
-    	TxtBD.text=Col[alpha[3]];
+        
+        adaptQuiz = GameObject.Find("EnnemyTimeBarImage").GetComponent<MyTimer>().maxTime;
+  
+        
+        if ( adaptQuiz == 5 ) {
+        	int indexGdAns = Array.IndexOf(Col,Col[5]);
+        	
+        	
+        	List<int> nums = new List<int>(alpha);
+		nums.RemoveAt(nums.IndexOf(indexGdAns)); 
+		alpha = nums.ToArray();
+        	
+      		if (nbQst != numQst){
+		    random_val<int>(alpha);
+		   // Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
+	      	  }
+		TxtHG.text=Col[alpha[0]];
+	    	TxtHD.text=Col[indexGdAns];
+	    	
+	    	TxtBG.text="remove";
+	    	
+	    	TxtBD.text="remove";	
+        
+        } 
+        else{
+        	if (nbQst != numQst){
+		    random_val<int>(alpha);
+		   // Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
+	      	  }
+	    	TxtHG.text=Col[alpha[0]];
+	    	TxtHD.text=Col[alpha[1]];
+	    	TxtBG.text=Col[alpha[2]];
+	    	//TxtHD.text=Col[alpha[1]]+score;
+	    	//TxtBG.text=Col[alpha[2]]+niveau;
+	    	TxtBD.text=Col[alpha[3]];
+    	}
     	reponse=Col[5];
         new_questions = false;
     }
