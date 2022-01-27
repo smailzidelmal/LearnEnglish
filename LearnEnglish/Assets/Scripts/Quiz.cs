@@ -68,10 +68,15 @@ public class Quiz: MonoBehaviour
         if (new_questions){
             PoseUneQuestion(numQst);
             adapt2Answer =true ;
+            adapt4Answer =true ;
         }
         else if (adaptQuiz == 5 &  adapt2Answer == true ){
       		 PoseUneQuestion(numQst);
         	 adapt2Answer=false; 
+        }
+        else if (adaptQuiz > 5 &  adapt4Answer == true ){
+      		 PoseUneQuestion(numQst);
+        	 adapt4Answer=false; 
         }
         
     }
@@ -104,7 +109,8 @@ public class Quiz: MonoBehaviour
         TxtQuestion.text=Col[0];
         
         adaptQuiz = GameObject.Find("EnnemyTimeBarImage").GetComponent<MyTimer>().maxTime;
-  
+  	GameObject ButtonHD = GameObject.Find("AnswerHD");
+	GameObject ButtonHG = GameObject.Find("AnswerHG");
         
         if ( adaptQuiz == 5 ) {
         	int indexGdAns = Array.IndexOf(Col,Col[5]);
@@ -118,15 +124,21 @@ public class Quiz: MonoBehaviour
 		    random_val<int>(alpha);
 		   // Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
 	      	  }
-		TxtHG.text=Col[alpha[0]];
-	    	TxtHD.text=Col[indexGdAns];
+		TxtBG.text=Col[alpha[0]];
+	    	TxtBD.text=Col[indexGdAns];
 	    	
-	    	TxtBG.text="remove";
 	    	
-	    	TxtBD.text="remove";	
+	    	ButtonHD.SetActive(false);
+	    	ButtonHG.SetActive(false);
+	    	
+	    	
         
         } 
         else{
+        
+        	ButtonHD.SetActive(true);
+	    	ButtonHG.SetActive(true);
+	    	
         	if (nbQst != numQst){
 		    random_val<int>(alpha);
 		   // Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
