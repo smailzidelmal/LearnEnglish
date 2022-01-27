@@ -68,16 +68,16 @@ public class Quiz: MonoBehaviour
         if (new_questions){
             PoseUneQuestion(numQst);
             adapt2Answer =true ;
-            adapt4Answer =true ;
+            //adapt4Answer =true ;
         }
         else if (adaptQuiz == 5 &  adapt2Answer == true ){
       		 PoseUneQuestion(numQst);
         	 adapt2Answer=false; 
         }
-        else if (adaptQuiz > 5 &  adapt4Answer == true ){
+        /*else if (adaptQuiz > 5 &  adapt4Answer == true ){
       		 PoseUneQuestion(numQst);
         	 adapt4Answer=false; 
-        }
+        }*/
         
     }
 
