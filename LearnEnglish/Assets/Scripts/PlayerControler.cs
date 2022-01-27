@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 
 public class PlayerControler : MonoBehaviour
@@ -46,14 +47,18 @@ public class PlayerControler : MonoBehaviour
         transform.position = start_position;
         player.SetTrigger("dammage");
     }
-
-    void getCardio(){
-        string file = "Assets/Scripts/cardio.txt";
+    public int instantPPM = 0; 
+    public int avragePPM = 120;
+    public int getCardio(){
+        string file = "../capt_cardio/cardio.txt";
         string path_file = Path.Combine(Application.dataPath ,Path.GetFullPath(file));
         if (File.Exists(path_file)){
             string[] lines = System.IO.File.ReadAllLines(file);
             Debug.Log(lines[0]);
+            instantPPM = Int16.Parse(lines[0]);
+            return Int16.Parse(lines[0]);
             //File.Delete(path_file);
         }
+        return avragePPM ;
     }
 }
