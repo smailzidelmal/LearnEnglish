@@ -14,6 +14,7 @@ public class Click : MonoBehaviour
         
     	if(GameObject.Find("Canvas").GetComponent<Quiz>().reponse == transform.GetChild(0).GetComponent<TextMesh>().text)
     	{
+			GeneralInfo.setResult(numQst, "true");
     		Debug.Log(" bonne réponse !! ....confirmez votre performance avec cette nouvelle question  ");
     		GameObject.Find("Canvas").GetComponent<Quiz>().score +=1;
     		GeneralInfo.answer(true);
@@ -29,6 +30,7 @@ public class Click : MonoBehaviour
     	}
     	else
     	{
+    		GeneralInfo.setResult(numQst, "false");
     		Debug.Log(" Mauvaise réponse ....essayer de vous rattraper avec cette nouvelle question  ");
     		GeneralInfo.answer(false);
     		GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 2f/nbQst;
@@ -41,6 +43,12 @@ public class Click : MonoBehaviour
     			GameObject.Find("Canvas").GetComponent<Quiz>().numQst=nbQst;
     		}
     	}
+
+		float palyerGameOver = GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount ;
+		float ennemyGameOver = GameObject.Find("EnnemyHealthBarImage").GetComponent<health>().healthBarImage.fillAmount;
+		if (palyerGameOver <=0 || ennemyGameOver <= 0){
+			GeneralInfo.write_file_player(42, "C2", nbQst);
+		}
 		Debug.Log("Desactivate");
 		GameObject.Find("Canvas").SetActive(false);
     }

@@ -11,11 +11,16 @@ public class Login : MonoBehaviour
     public string username;
     public GameObject playButton ;
 
+    public GameObject speedbar;
+
     public void loginButton()
     {
         if(username != ""){
 	    	if(System.IO.File.Exists(@"../data/"+username+".csv")){
 	    		print("registration sucessful ... Welcome "+username);
+                GeneralInfo.parsefileplayer(@"../data/"+username+".csv");
+                GeneralInfo.setuser(username);
+                speedbar.GetComponent<MyTimer>().maxTime = 9f;
 	    		//UserName.GetComponent<InputField>().text="";
 	    		this.playButton.SetActive(true);
 	    	}

@@ -33,7 +33,9 @@ public static class GeneralInfo
         return correct;
     }
 
-    
+    public static List<string> getQuestion(){
+        return res_dict["question"];
+    }    
 
     public static void parsefileplayer(string file){
         string path_file = Path.Combine(Application.dataPath ,Path.GetFullPath(file));
@@ -79,16 +81,16 @@ public static class GeneralInfo
     }
 
 
-    public static void write_file_player(List<string> result_answer, string username, int ppm_moy, string lvl, int tot_quest){
+    public static void write_file_player(int ppm_moy, string lvl, int tot_quest){
         StreamWriter sw = new StreamWriter(@"../data/"+username+".csv", false);
         // la premiere ligne donne les info
         sw.WriteLine(username + ";" + ppm_moy + ";" + lvl);
         for (int i = 0; i < tot_quest; i++){
             Debug.Log(i);
-            if (i < result_answer.Count){
+            if (result_answer.ContainsKey(i)){
                 sw.WriteLine("" + i + ";" + result_answer[i]);
             }
-            else  if (res_dict != null && i < res_dict["question"].Count){
+            else if (res_dict != null && i < res_dict["question"].Count){
                 sw.WriteLine("" + i + ";" + res_dict["question"][i]);
             }
             else {
@@ -97,4 +99,60 @@ public static class GeneralInfo
         }
         sw.Close();
     } 
+
+
+
+    public static  int instantPPM = 0; 
+    public static  int avragePPM = 60;
+
+
+    public static List<int> list_cardio = new List<int>();
+
+    public static int getCardio(){
+        string file = "../capt_cardio/cardio.txt";
+        string path_file = Path.Combine(Application.dataPath ,Path.GetFullPath(file));
+        if (File.Exists(path_file)){
+            string[] lines = System.IO.File.ReadAllLines(file);
+            Debug.Log(lines[0]);
+            instantPPM = Int16.Parse(lines[0]);
+            list_cardio.Add(Int16.Parse(lines[0]));
+            return Int16.Parse(lines[0]);
+            //File.Delete(path_file);
+        }
+        list_cardio.Add(avragePPM);
+        return avragePPM;
+    }
+
+    public static int getCardioMoy(){
+        if (res_dict["gene"].Count < 2){
+            return avragePPM;
+        }
+        return Int16.Parse(res_dict["gene"][1]); 
+        /*poid = 100;
+        avragePPM * poid + getCardio() / (poid+1);*/
+    }
+    
+    private static Dictionary<int, string> result_answer = new Dictionary<int, string>();
+
+    public static void reset(){
+        result_answer = new Dictionary<int, string>();
+    }
+
+    public static void setResult(int ind, string res){
+        if (!result_answer.ContainsKey(ind))
+        {
+            result_answer.Add(ind, res);
+        }
+        else {
+            result_answer[ind] = res;
+        }
+    }
+
+
+    public static string username;
+
+    public static void setuser(string user){
+        username = user;
+    }
+
 }

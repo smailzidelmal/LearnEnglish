@@ -113,23 +113,23 @@ public class Quiz: MonoBehaviour
         TxtQuestion.text=Col[0];
         
         adaptQuiz = GameObject.Find("EnnemyTimeBarImage").GetComponent<MyTimer>().maxTime;
-        //GameObject ButtonHD = GameObject.Find("AnswerHD");
-        //GameObject ButtonHG = GameObject.Find("AnswerHG");
         
         if ( adaptQuiz == 5 ) {
         	int indexGdAns = Array.IndexOf(Col,Col[5]);
         	
         	
         	List<int> nums = new List<int>(alpha);
-		nums.RemoveAt(nums.IndexOf(indexGdAns)); 
-		alpha = nums.ToArray();
+		    nums.RemoveAt(nums.IndexOf(indexGdAns)); 
+		    alpha = nums.ToArray();
         	
       		if (nbQst != numQst){
-		    random_val<int>(alpha);
-		   // Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
-	      	  }
-		TxtBG.text=Col[alpha[0]];
-	    	TxtBD.text=Col[indexGdAns];
+		        random_val<int>(alpha);
+		        // Debug.Log(alpha[0]+ ", "+ alpha[1]+ ", "+ alpha[2]+ ", "+ alpha[3]);
+	      	}
+            int [] alpha2 = {alpha[0], indexGdAns};
+            random_val<int>(alpha2);
+		    TxtBG.text=Col[alpha2[0]];
+	    	TxtBD.text=Col[alpha2[1]];
 	    	
 	    	
 	    	ButtonHD.SetActive(false);

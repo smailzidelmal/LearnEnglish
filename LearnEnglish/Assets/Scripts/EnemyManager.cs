@@ -26,8 +26,13 @@ public class EnemyManager : MonoBehaviour
             int nbQst = GameObject.Find("Canvas").GetComponent<Quiz>().nbQst;
             if(numQst+1 < nbQst){
                 GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
+                numQst = GameObject.Find("Canvas").GetComponent<Quiz>().numQst ;
             }
-            else{
+            while(numQst+1 < nbQst && numQst < GeneralInfo.getQuestion().Count && string.Compare(GeneralInfo.getQuestion()[numQst], "true") == 0){
+                GameObject.Find("Canvas").GetComponent<Quiz>().numQst +=1;
+                numQst = GameObject.Find("Canvas").GetComponent<Quiz>().numQst;
+            }
+            if (numQst+1 >= nbQst){
                 Debug.Log(" Le Jeu est Fini ");
                 GameObject.Find("Canvas").GetComponent<Quiz>().numQst=nbQst;
             }
