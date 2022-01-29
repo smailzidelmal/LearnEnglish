@@ -6,9 +6,12 @@ public class GotoMenu : MonoBehaviour
 {
     public  GameObject Menu;
     public  GameObject EndMenu;
-   
+    public  GameObject rules;
+    public GameObject logRegister ;
    void OnMouseDown(){
    	this.EndMenu.SetActive(false);
-   	this.Menu.SetActive(true);  	
+   	this.rules.SetActive(false);	
+   	this.Menu.SetActive(true);
+   	this.logRegister.SetActive(true);
    }
 }
