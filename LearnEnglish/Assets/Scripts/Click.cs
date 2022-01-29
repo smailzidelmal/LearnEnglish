@@ -10,13 +10,14 @@ public class Click : MonoBehaviour
     	int numQst =GameObject.Find("Canvas").GetComponent<Quiz>().numQst ;
         int nbQst =GameObject.Find("Canvas").GetComponent<Quiz>().nbQst;
         //todo calcule du score 
+		Debug.Log("Degat "+2f/nbQst);
         
     	if(GameObject.Find("Canvas").GetComponent<Quiz>().reponse == transform.GetChild(0).GetComponent<TextMesh>().text)
     	{
     		Debug.Log(" bonne réponse !! ....confirmez votre performance avec cette nouvelle question  ");
     		GameObject.Find("Canvas").GetComponent<Quiz>().score +=1;
     		GeneralInfo.answer(true);
-    		GameObject.Find("EnnemyHealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.05f;
+    		GameObject.Find("EnnemyHealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 2f/nbQst;
     		GameObject.Find("EnnemyTimeBarImage").GetComponent<MyTimer>().TimerBar.fillAmount = 1f;
 			foreach (GameObject ennemy in GameObject.FindGameObjectsWithTag("Enemy")) {
              	ennemy.GetComponent<EnemyManager>().takeDamage();
@@ -30,7 +31,7 @@ public class Click : MonoBehaviour
     	{
     		Debug.Log(" Mauvaise réponse ....essayer de vous rattraper avec cette nouvelle question  ");
     		GeneralInfo.answer(false);
-    		GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 0.05f;
+    		GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount -= 2f/nbQst;
     		GameObject.Find("EnnemyTimeBarImage").GetComponent<MyTimer>().TimerBar.fillAmount = 1f;
   			foreach (GameObject ennemy in GameObject.FindGameObjectsWithTag("Enemy")) {
              	ennemy.GetComponent<EnemyManager>().hit();
