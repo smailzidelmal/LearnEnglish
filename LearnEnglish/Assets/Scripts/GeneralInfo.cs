@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using System.Linq;
 
 public static class GeneralInfo
 {
-
     static bool isanswer = false;
     static bool correct = false;   
     public static bool walk = true;
@@ -36,6 +36,16 @@ public static class GeneralInfo
     public static List<string> getQuestion(){
         return res_dict["question"];
     }    
+
+    public static void lanchEndMenu(){
+        Debug.Log("FIN");
+        MenuEnd[] onlyInactive = GameObject.FindObjectsOfType<MenuEnd>(true).Where(sr => !sr.gameObject.activeInHierarchy).ToArray();
+		Debug.Log(onlyInactive.Length);
+        if (onlyInactive.Length == 1) {
+            Debug.Log("VISIBLE");
+            onlyInactive[0].gameObject.SetActive(true);
+        }
+    }
 
     public static void parsefileplayer(string file){
         string path_file = Path.Combine(Application.dataPath ,Path.GetFullPath(file));
@@ -86,7 +96,6 @@ public static class GeneralInfo
         // la premiere ligne donne les info
         sw.WriteLine(username + ";" + ppm_moy + ";" + lvl);
         for (int i = 0; i < tot_quest; i++){
-            Debug.Log(i);
             if (result_answer.ContainsKey(i)){
                 sw.WriteLine("" + i + ";" + result_answer[i]);
             }

@@ -15,6 +15,11 @@ public class GameGenerator : MonoBehaviour
     public Vector3 posenemy = new Vector3(0f, -1f,-1f);
     public GameObject bg;
 
+    public GameObject hpPlayer;
+    public GameObject hpEnemy;
+    
+    public GameObject barAtk;
+
     public Vector3 posbg = new Vector3(0f, 0f,60f);
     
     private bool isStarted = false;
@@ -68,6 +73,10 @@ public class GameGenerator : MonoBehaviour
         for (int i = 0; i <= 8; i++){
             spawnRoad();
         }
+        hpPlayer.GetComponent<health>().healthBarImage.fillAmount=1f;
+		hpEnemy.GetComponent<health>().healthBarImage.fillAmount=1f;
+        barAtk.GetComponent<MyTimer>().TimerBar.fillAmount = 1f;
+
         Vector3 posenemy2 = posenemy;
         posenemy2.x += 2f;
         Vector3 posenemy3 = posenemy;

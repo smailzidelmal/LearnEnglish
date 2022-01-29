@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class Click : MonoBehaviour
 {
     public GameObject canvas;
@@ -46,8 +46,10 @@ public class Click : MonoBehaviour
 
 		float palyerGameOver = GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount ;
 		float ennemyGameOver = GameObject.Find("EnnemyHealthBarImage").GetComponent<health>().healthBarImage.fillAmount;
+		Debug.Log(palyerGameOver + " <=0 || " +ennemyGameOver);
 		if (palyerGameOver <=0 || ennemyGameOver <= 0){
 			GeneralInfo.write_file_player(42, "C2", nbQst);
+			GeneralInfo.lanchEndMenu();
 		}
 		Debug.Log("Desactivate");
 		GameObject.Find("Canvas").SetActive(false);
