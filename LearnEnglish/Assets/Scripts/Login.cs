@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 public class Login : MonoBehaviour
 {
     public GameObject UserName;
-    private string username;
+    public string username;
     
 
     public void loginButton()
@@ -16,7 +16,7 @@ public class Login : MonoBehaviour
         if(username != ""){
 	    	if(System.IO.File.Exists(@"../data/"+username+".csv")){
 	    		print("registration sucessful ... Welcome "+username);
-	    		UserName.GetComponent<InputField>().text="";
+	    		//UserName.GetComponent<InputField>().text="";
 	    	}
 	    	else{
 	    		Debug.Log("user name Invalid ");
