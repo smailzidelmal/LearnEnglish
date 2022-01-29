@@ -11,6 +11,8 @@ public static class GeneralInfo
     static bool correct = false;   
     public static bool walk = true;
 
+    private static Dictionary<string, List<string>>  res_dict = null;
+
     public static bool isWalk(){
         return walk;
     }
@@ -31,18 +33,21 @@ public static class GeneralInfo
         return correct;
     }
 
+    
+
     public static void parsefileplayer(string file){
         string path_file = Path.Combine(Application.dataPath ,Path.GetFullPath(file));
-        Dictionary<string, List<string>> res_dict = new Dictionary<string, List<string>>();
+        res_dict = new Dictionary<string, List<string>>();
         using(var reader = new StreamReader(path_file))
         {
-            reader.ReadLine();
+            //si ligne d'explication
+            //reader.ReadLine();
             var line = reader.ReadLine();
             var line_split = line.Split(';');
             try {
                 //recupération du login est des donées général (cardio moyen et son niveau)
                 res_dict.Add("gene", new List<string>());
-                for (int i = 1; i < line_split.Length; i++){
+                for (int i = 0; i < line_split.Length; i++){
                     res_dict["gene"].Add(line_split[i]);
                 }
                 // recupération des réponse au questions
@@ -73,4 +78,23 @@ public static class GeneralInfo
         }
     }
 
+
+    public static void write_file_player(List<string> result_answer, string username, int ppm_moy, string lvl, int tot_quest){
+        StreamWriter sw = new StreamWriter(@"../data/"+username+".csv", false);
+        // la premiere ligne donne les info
+        sw.WriteLine(username + ";" + ppm_moy + ";" + lvl);
+        for (int i = 0; i < tot_quest; i++){
+            Debug.Log(i);
+            if (i < result_answer.Count){
+                sw.WriteLine("" + i + ";" + result_answer[i]);
+            }
+            else  if (res_dict != null && i < res_dict["question"].Count){
+                sw.WriteLine("" + i + ";" + res_dict["question"][i]);
+            }
+            else {
+                sw.WriteLine("" + i + ";false");
+            }
+        }
+        sw.Close();
+    } 
 }
