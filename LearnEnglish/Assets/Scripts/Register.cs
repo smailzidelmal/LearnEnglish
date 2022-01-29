@@ -10,15 +10,10 @@ public class Register : MonoBehaviour
 {
     public GameObject UserName;
     private string username;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
     public void registerButton(){
-    	//print("registration sucessful");
     	if(username != ""){
-	    	if(System.IO.File.Exists(@"../data/"+username+".txt")){
+	    	if(System.IO.File.Exists(@"../LearnEnglish/data/"+username+".csv")){
 	    		Debug.Log("user name taken ");
 	    	}
 	    	else{
@@ -35,10 +30,6 @@ public class Register : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    	/*if(Input.GetKeyDown(KeyCode.Return))
-    	{
-    		registerButton();
-    	}*/
         username = UserName.GetComponent<InputField>().text;
     }
 }
