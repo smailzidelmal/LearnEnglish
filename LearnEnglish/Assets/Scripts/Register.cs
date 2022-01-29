@@ -13,11 +13,11 @@ public class Register : MonoBehaviour
     
     public void registerButton(){
     	if(username != ""){
-	    	if(System.IO.File.Exists(@"../LearnEnglish/data/"+username+".csv")){
+	    	if(System.IO.File.Exists(@"../data/"+username+".csv")){
 	    		Debug.Log("user name taken ");
 	    	}
 	    	else{
-	    		System.IO.File.WriteAllText(@"../LearnEnglish/data/"+username+".csv",username);
+	    		System.IO.File.WriteAllText(@"../data/"+username+".csv",username);
 	    		UserName.GetComponent<InputField>().text="";
 	    		print("registration sucessful");
 	    	}

@@ -14,7 +14,7 @@ public class Login : MonoBehaviour
     public void loginButton()
     {
         if(username != ""){
-	    	if(System.IO.File.Exists(@"../LearnEnglish/data/"+username+".csv")){
+	    	if(System.IO.File.Exists(@"../data/"+username+".csv")){
 	    		print("registration sucessful ... Welcome "+username);
 	    		UserName.GetComponent<InputField>().text="";
 	    	}
