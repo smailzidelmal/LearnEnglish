@@ -103,7 +103,6 @@ public class Quiz: MonoBehaviour
     	else if (score <= 80){niveau="B2-Avancé ";}
     	else if(score <= 90){niveau="C1- Courant";}
     	
-    	//string[] Col=Quizz[numQst].Split(',');
     	string[] Col=Quizz2[numQst];
         
         //TODO: mettre le random des questions de maniere plus propre.

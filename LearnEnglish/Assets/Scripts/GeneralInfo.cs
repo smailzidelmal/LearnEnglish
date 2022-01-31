@@ -13,6 +13,11 @@ public static class GeneralInfo
 
     private static Dictionary<string, List<string>>  res_dict = null;
 
+    public static string username;
+
+    public static  int instantPPM = 0; 
+    public static  int avragePPM = 60;
+
     public static bool isWalk(){
         return walk;
     }
@@ -93,7 +98,7 @@ public static class GeneralInfo
     }
 
 
-    public static void write_file_player(int ppm_moy, string lvl, int tot_quest){
+    public static void write_file_player(string ppm_moy, string lvl, int tot_quest){
         StreamWriter sw = new StreamWriter(@"../data/"+username+".csv", false);
         // la premiere ligne donne les info
         sw.WriteLine(username + ";" + ppm_moy + ";" + lvl);
@@ -111,10 +116,16 @@ public static class GeneralInfo
         sw.Close();
     } 
 
-
-
-    public static  int instantPPM = 0; 
-    public static  int avragePPM = 60;
+    public static void write_file_player(string lvl, int tot_quest){
+        string ppm_moy = "";
+        if (list_cardio.Count > 0){
+            ppm_moy = "" + list_cardio.Average();
+        }
+        else{
+            ppm_moy = res_dict["gene"][1];
+        }
+        write_file_player(ppm_moy, lvl, tot_quest);
+    }
 
 
     public static List<int> list_cardio = new List<int>();
@@ -138,9 +149,7 @@ public static class GeneralInfo
         if (res_dict["gene"].Count < 2){
             return avragePPM;
         }
-        return Int16.Parse(res_dict["gene"][1]); 
-        /*poid = 100;
-        avragePPM * poid + getCardio() / (poid+1);*/
+        return Int16.Parse(res_dict["gene"][1]);
     }
     
     private static Dictionary<int, string> result_answer = new Dictionary<int, string>();
@@ -159,8 +168,6 @@ public static class GeneralInfo
         }
     }
 
-
-    public static string username;
 
     public static void setuser(string user){
         username = user;

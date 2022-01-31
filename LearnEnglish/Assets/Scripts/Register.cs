@@ -17,8 +17,10 @@ public class Register : MonoBehaviour
 	    		Debug.Log("user name taken ");
 	    	}
 	    	else{
-	    		System.IO.File.WriteAllText(@"../data/"+username+".csv",username);
-	    		UserName.GetComponent<InputField>().text="";
+	    		//System.IO.File.WriteAllText(@"../data/"+username+".csv",username);
+	    		GeneralInfo.setuser(username);
+				GeneralInfo.write_file_player("" + GeneralInfo.getCardio(), "A2", 90);
+				UserName.GetComponent<InputField>().text="";
 	    		print("registration sucessful");
 	    	}
     	}
