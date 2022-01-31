@@ -48,7 +48,7 @@ public class Click : MonoBehaviour
 		float palyerGameOver = GameObject.Find("HealthBarImage").GetComponent<health>().healthBarImage.fillAmount ;
 		float ennemyGameOver = GameObject.Find("EnnemyHealthBarImage").GetComponent<health>().healthBarImage.fillAmount;
 		Debug.Log(palyerGameOver + " <=0 || " +ennemyGameOver);
-		if (palyerGameOver <=0 || ennemyGameOver <= 0){
+		if (palyerGameOver <= 0.001 || ennemyGameOver <= 0.001){
 			GeneralInfo.write_file_player("C2", nbQst);
 			rules.SetActive(false);
 			GeneralInfo.lanchEndMenu();
