@@ -42,7 +42,6 @@ public class EnemyManager : MonoBehaviour
 
     public void hit(){
         transform.position = start_position;
-        Debug.Log("frappe");
         enemy.SetTrigger("hit");
     }
 

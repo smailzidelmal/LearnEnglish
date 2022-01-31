@@ -53,7 +53,6 @@ public class Click : MonoBehaviour
 			rules.SetActive(false);
 			GeneralInfo.lanchEndMenu();
 		}
-		Debug.Log("Desactivate");
 		GameObject.Find("Canvas").SetActive(false);
     }
 }
