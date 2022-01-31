@@ -34,7 +34,7 @@ public class EnemyManager : MonoBehaviour
             }
             if (numQst+1 >= nbQst){
                 Debug.Log(" Le Jeu est Fini ");
-                GameObject.Find("Canvas").GetComponent<Quiz>().numQst=nbQst;
+                GameObject.Find("Canvas").GetComponent<Quiz>().numQst=UnityEngine.Random.Range(0, nbQst - 1);
             }
             GameObject.Find("Canvas").GetComponent<Quiz>().new_questions = true;
         }

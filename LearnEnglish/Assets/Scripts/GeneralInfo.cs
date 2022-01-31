@@ -45,6 +45,8 @@ public static class GeneralInfo
             Debug.Log("VISIBLE");
             onlyInactive[0].gameObject.SetActive(true);
         }
+        GameGenerator gameGen = GameObject.FindGameObjectWithTag("Generator").GetComponent<GameGenerator>(); 
+        gameGen.destroyAll();
     }
 
     public static void parsefileplayer(string file){

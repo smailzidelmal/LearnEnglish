@@ -64,6 +64,10 @@ public class GameGenerator : MonoBehaviour
    		foreach(GameObject obj in objects){
 			GameObject.Destroy(obj);
 		}
+        objects = GameObject.FindGameObjectsWithTag("Road");
+   		foreach(GameObject obj in objects){
+			GameObject.Destroy(obj);
+		}
         isStarted = false;
     }
 

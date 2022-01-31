@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 public class Click : MonoBehaviour
 {
+	public GameObject rules;
     public GameObject canvas;
     void OnMouseDown(){
 		
@@ -49,6 +50,7 @@ public class Click : MonoBehaviour
 		Debug.Log(palyerGameOver + " <=0 || " +ennemyGameOver);
 		if (palyerGameOver <=0 || ennemyGameOver <= 0){
 			GeneralInfo.write_file_player(42, "C2", nbQst);
+			rules.SetActive(false);
 			GeneralInfo.lanchEndMenu();
 		}
 		Debug.Log("Desactivate");

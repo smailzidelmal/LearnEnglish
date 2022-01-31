@@ -9,6 +9,7 @@ TagManager:
   - BackGround
   - Canvas
   - MenuEnd
+  - Road
   layers:
   - Default
   - TransparentFX

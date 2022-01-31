@@ -119,6 +119,7 @@ public class Quiz: MonoBehaviour
         	
         	
         	List<int> nums = new List<int>(alpha);
+            Debug.Log(nums.IndexOf(indexGdAns));
 		    nums.RemoveAt(nums.IndexOf(indexGdAns)); 
 		    alpha = nums.ToArray();
         	
