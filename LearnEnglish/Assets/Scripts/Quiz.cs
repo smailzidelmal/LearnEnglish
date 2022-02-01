@@ -42,7 +42,7 @@ public class Quiz: MonoBehaviour
         TxtBD = GameObject.Find("textBD").GetComponent <TextMesh>();
         GameObject.Find("Canvas").SetActive(false);
         
-        using(var reader = new StreamReader("Assets/Ressources/question.csv"))
+        using(var reader = new StreamReader("../data/question/question.csv"))
         {
             reader.ReadLine();
             nbQst= -1;
@@ -55,9 +55,6 @@ public class Quiz: MonoBehaviour
 
             }
         }
-        
-      //  Debug.Log("nbstart = " + numQst);
-        //PoseUneQuestion(numQst);
     }
 
 
@@ -96,6 +93,7 @@ public class Quiz: MonoBehaviour
     
     void PoseUneQuestion(int numQst)
     {
+        //amelioration future
         //Debug.Log("nb = " + numQst);
     	if (score <= 20){niveau="A1- Débutant";}
     	else if (score <= 35){niveau="A2- Moyen";}
@@ -104,8 +102,7 @@ public class Quiz: MonoBehaviour
     	else if(score <= 90){niveau="C1- Courant";}
     	
     	string[] Col=Quizz2[numQst];
-        
-        //TODO: mettre le random des questions de maniere plus propre.
+
         int[] alpha = {1, 2, 3, 4};
 
   	
@@ -150,8 +147,6 @@ public class Quiz: MonoBehaviour
 	    	TxtHG.text=Col[alpha[0]];
 	    	TxtHD.text=Col[alpha[1]];
 	    	TxtBG.text=Col[alpha[2]];
-	    	//TxtHD.text=Col[alpha[1]]+score;
-	    	//TxtBG.text=Col[alpha[2]]+niveau;
 	    	TxtBD.text=Col[alpha[3]];
     	}
     	reponse=Col[5];

@@ -2852,6 +2852,7 @@ MonoBehaviour:
   TimerBar: {fileID: 2110476636}
   start: 0
   step: 1
+  multiply: 200
 --- !u!114 &2110476636
 MonoBehaviour:
   m_ObjectHideFlags: 0

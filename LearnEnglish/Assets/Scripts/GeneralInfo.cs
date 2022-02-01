@@ -56,6 +56,7 @@ public static class GeneralInfo
 
     public static void parsefileplayer(string file){
         string path_file = Path.Combine(Application.dataPath ,Path.GetFullPath(file));
+        Debug.Log(path_file);
         res_dict = new Dictionary<string, List<string>>();
         using(var reader = new StreamReader(path_file))
         {
@@ -99,7 +100,7 @@ public static class GeneralInfo
 
 
     public static void write_file_player(string ppm_moy, string lvl, int tot_quest){
-        StreamWriter sw = new StreamWriter(@"../data/"+username+".csv", false);
+        StreamWriter sw = new StreamWriter(@"../data/player/"+username+".csv", false);
         // la premiere ligne donne les info
         sw.WriteLine(username + ";" + ppm_moy + ";" + lvl);
         for (int i = 0; i < tot_quest; i++){

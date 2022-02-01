@@ -12,6 +12,8 @@ public class MyTimer : MonoBehaviour
     public Image TimerBar;
     public bool start = false ;
     public float step = 1f;
+
+	public float multiply = 200f;
     
     private float adaptSpeedTimeDelay = 10.0f;
     private float nextadaptSpeedTime = 0.0f;
@@ -47,7 +49,7 @@ public class MyTimer : MonoBehaviour
 				else if (TimerBar.fillAmount < 0.3 ){TimerBar.color = Color.red;}
 				else{ TimerBar.color = Color.green;}
 				
-				TimerBar.fillAmount =  TimerBar.fillAmount - (maxTime / fraction);
+				TimerBar.fillAmount =  TimerBar.fillAmount - (maxTime / fraction) * Time.deltaTime * multiply;
 			}
 		}
     }
